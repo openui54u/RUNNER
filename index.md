@@ -32,7 +32,7 @@ In Android the Fullscreen text on the buttom can be used also.
 
 # Hosted
 Currently hosted on:
-[apteraclub.eu/app/runner](ApteraClub.eu)
+[apteraclub.eu/app/runner]
 
 
 # Contribution
