@@ -1,37 +1,50 @@
-## Welcome to GitHub Pages
+# Welcome to the GitHub Page of RUNNER
+( openui54u.github.io/RUNNER )
 
-You can use the [editor on GitHub](https://github.com/openui54u/RUNNER/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+This app was made for the Athletics Running training of my daughter.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## START - STOP - RESET
+Pressing the START button will start a "On your marks.....get set" audio file.
+The gunshot will be heared and time will start running.
+Pressing the >>STOP<<  button within 1 second will give another shotgun sound for "false start".
+After 1 second a normal STOP of the run can be pressed. The time is indicated in HH:MM:SS.mmm
+HH: Hours
+MM: Minutes
+SS: Seconds
+mmmm : mircroseconds.
 
-### Markdown
+### Finetuning your smartphone.
+The reaction speed of your smartphone in playing the sound and starting the timer can differ. Adjust the "Delay ShotGun->Timer(ms) slider to adjust for accuracy.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## [ ] Off    [ ] On
+The button/bar just below the timer is a button for AUTO-play. Easy for training indoor on the 50m-60m.
+Default set to 20seconds. Adjust to your liking.
+After pressing this button the sequence will repeat on your set "Dealy Auto-Rerun(s)"time . From shot to shot it will take 2x the set time.
 
-```markdown
-Syntax highlighted code block
+## LAP MARK
+While the time is progressing you can choose to press LAP or MARK to have lap time ( after every lap , laptime is initialised ) or marked .
 
-# Header 1
-## Header 2
-### Header 3
+# PWA
+This app is intended to be run as PWA. The current ( beta test ) is not yet hosted on https. This will prevent certain options.
+When opened in CHrome ( Android ) or Safari (iOS ) you can choose to add to Homescreen / Add to Startscreen.
+This will give an "app" icon to your homescreen. Fullscreen experience.
+In Android the Fullscreen text on the buttom can be used also.
 
-- Bulleted
-- List
+# Hosted
+Currently hosted on:
+[apteraclub.eu/app/runner](ApteraClub.eu)
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+# Contribution
+When you have improvements / suggestions for this app, let me know.
+github.com/openui54u/RUNNER
 
-[Link](url) and ![Image](src)
-```
+With Kind Regards,
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+Edwin Glaser
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/openui54u/RUNNER/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
+[editor on GitHub](https://github.com/openui54u/RUNNER/edit/gh-pages/index.md)
