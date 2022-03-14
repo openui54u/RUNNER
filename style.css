@@ -1,4 +1,8 @@
 
+.disable-dbl-tap-zoom{
+  touch-action: manipulation;
+}
+
 #stopwatch{
     font-size: 3em;
     left: 0vw;

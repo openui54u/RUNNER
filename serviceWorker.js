@@ -1,4 +1,4 @@
-const staticRunner = "dev-runner-site-v1.16"
+const staticRunner = "dev-runner-site-v1.17"
 const assets = [
   "./app/runner/",
   "./app/runner/index.html",

@@ -24,38 +24,39 @@
 </head>
 
 <body>
-    <div id="initsound" class ="initsound">
+    <div id="initsound" class ="initsound disable-dbl-tap-zoom{">
         Press here to use this beta app.
         <p>- Runner Sprint Shot - </p> 
         <p>Runs best on Android - Chrome</p>
         <p>Runs best on Safari - iOS</p>
         <p>Add to StartScreen to experience FullScreen App</p>
         <p>(After clicking you will hear 1 gunshot to test sound)</p>
+        <p>v1.17</p>
     </div>
-    <div id="fullcontainer" class="grid-container hidden">
+    <div id="fullcontainer" class="grid-container hidden disable-dbl-tap-zoom{">
 
-        <div class="slidecontainer item2">
+        <div class="slidecontainer item2 disable-dbl-tap-zoom{">
             <input type="range" min="1" max="1000" value="200" class="slider" id="myRange">
             Delay ShotGun->Timer (ms): <span id="delay"></span>
         </div>
-        <div class="slide2container item2">
+        <div class="slide2container item2 disable-dbl-tap-zoom{">
             <input type="range" min="12" max="60" value="20" class="slider" id="myRange2">
             Delay Auto-Rerun (s): <span id="delay2"></span>
         </div>
 
-        <div id="stopwatch" class="stopwatch item1">
+        <div id="stopwatch" class="stopwatch item1 disable-dbl-tap-zoom{">
             00:00:00.00
         </div>
 
-        <div class="button item3">
+        <div class="button item3 disable-dbl-tap-zoom{">
             <input type="button" value="[ ] Off" id="onoff" class="start" onclick="onoff();">
         </div>
         <!-- <div id="container"> -->
-        <div id="header" class="item0">
+        <div id="header" class="item0 disable-dbl-tap-zoom{">
             Runner
         </div>
 
-        <div class="item4">
+        <div class="item4 disable-dbl-tap-zoom{">
             <button id="button" class="button" onclick=clickButton()>
                 <div id="text">
                     START
@@ -63,23 +64,23 @@
         </div>
 
 
-        <div class="item6">
+        <div class="item6 disable-dbl-tap-zoom{">
             <div id="laptext" class="stopwatch">
                 00:00:00.00
             </div>
         </div>
-        <div class="item6b">
+        <div class="item6b disable-dbl-tap-zoom{">
             <div id="marktext" class="stopwatch">
                 00:00:00.00
             </div>
         </div>
-        <div class="item5">
+        <div class="item5 disable-dbl-tap-zoom{">
             <button id="lap" class="button" onclick=clickButtonLap()>
                 <div id="text">
                     LAP
                 </div>
         </div>
-        <div class="item5b">
+        <div class="item5b disable-dbl-tap-zoom{">
             <button id="mark" class="button" onclick=clickButtonMark()>
                 <div id="textM">
                     MARK
@@ -90,18 +91,18 @@
         <!-- </div> -->
 
 
-        <div class="item7b">
+        <div class="item7b disable-dbl-tap-zoom{">
             <div id="version" class="footer">
                 0.0
             </div>
         </div>
-        <div class="item7a">
+        <div class="item7a disable-dbl-tap-zoom{">
             <button id="OnYourMarks" class="button" onclick=clickButtonOnYourMarks()>
                 <div id="textOYM">
                     OnYourMarks
                 </div>
         </div>
-        <div class="item7c">
+        <div class="item7c disable-dbl-tap-zoom{">
             <button id="GunShot" class="button" onclick=clickButtonGunShot()>
                 <div id="textGS">
                     GunShot

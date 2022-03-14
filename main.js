@@ -7,7 +7,7 @@
 
 let _div_version = document.getElementById("version");
 if (_div_version) {
-    _div_version.textContent = 'FullScreen 1.16'
+    _div_version.textContent = 'FullScreen 1.17'
 };
 
 let _time = 0;
