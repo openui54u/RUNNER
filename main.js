@@ -34,6 +34,7 @@ let _div_StopM = document.getElementById("marktext");
 
 var arrayLapText = [];
 var arrayMarkText = [];
+var  arrayLapTime = [];
 var synth = window.speechSynthesis;
 var voices = [];
 var currentvalueOnOff; // on off switch
@@ -136,6 +137,11 @@ function clickButtonLap(e) {
         if (!isNaN(_time)) {
             let _laptime = Milliseconds2TimeString(_time);
             arrayLapText.push(_laptime);
+            arrayLapTime.push(_time);
+            let _max = Math.max.apply(Math, arrayLapTime);
+            if(debug){console.log(_max)};
+            let _min = Math.min.apply(Math, arrayLapTime);
+            if(debug){console.log(_min)};
             _div_StopL.textContent = arrayLapText.toString().split(',').join("\r\n");
             _div_StopL.scrollTop = _div_StopL.scrollHeight;
 

@@ -6,6 +6,11 @@ html{
   touch-action: manipulation;
 }
 
+#autobutton{
+  left: 1vw;
+  position: relative;
+  text-align: left;
+}
 #header{
   font-size: 2em;
 }
@@ -15,21 +20,23 @@ html{
 }
 #laptext{
     /* position: relative; */
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     font-size: 1em;
     overflow: scroll;
-    max-width: 40vw;
-    min-width: 30vw;
+    /* max-width: 40vw; */
+    /* min-width: 30vw; */
+    width: 49vw;
 }
 #marktext{
     /* position: relative; */
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     font-size: 1em;
     overflow: scroll;
-    max-width: 40vw;
-    min-width: 30vw;
+    /* max-width: 40vw; */
+    /* min-width: 30vw; */
+    width: 49vw;
 }
 #button{
     width: 100vw;
@@ -109,20 +116,18 @@ width: 100%;
 }
 .item5{
     height: 3vh;
-    width:100%;
-    max-width: 50vw;
+    /* width:100%; */
+    width: 50vw;
 }
 .item5b{
-    width:100%;
+    /* width:100%; */
     height: 3vh;
-    max-width: 50vw;
+    width: 50vw;
     }
 .item6{
-    overflow: scroll;
     height: 13vh;
     }
 .item6b{
-    overflow: scroll;
      height: 13vh;
 }
 
@@ -238,7 +243,7 @@ grid-template-areas:
   'button2 button2 button2b button2b'
   'list list list2 list2'
   'footer1 footer2 footer2 footer3';
-gap: 5px;
+/* gap: 5px; */
 /* background-color: #2196F3; */
 padding: 0px;
 height: 100vh;
