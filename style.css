@@ -273,6 +273,22 @@ font-size: 1rem;
   display:none;
 }
 
+.lang{
+  /* float: right; */
+  width: 40vw;
+  max-width: 100px;
+  height: 6vh;
+}
+#UK{
+  background-image: url("UK.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+#NL{
+  background-image: url("NL.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 /* @media screen  and (orientation: landscape) {
   .grid-container {
   display: grid;

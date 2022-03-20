@@ -7,7 +7,7 @@
 
 let _div_version = document.getElementById("version");
 if (_div_version) {
-    _div_version.textContent = 'FullScreen 1.17'
+    _div_version.textContent = 'FullScreen 1.18'
 };
 
 let _time = 0;
@@ -42,6 +42,7 @@ var currentvalueOnOff_interval = {};
 var currentvalueOnOff_timer = 20000;
 var countdown_interval = {};
 let _currentvalueOnOff_timer = currentvalueOnOff_timer;
+var _language = 'UK';
 
 let _div = document.getElementById("text");
 
@@ -67,11 +68,13 @@ if ("serviceWorker" in navigator) {
 // Windows onload  
 window.onload = function () {
 
-  
+    language('UK'); // Set the text on introscreen.
+
+    let _intro = document.getElementById("intro");
     let _initsound = document.getElementById("initsound");
     _initsound.addEventListener('click', ()=>{
         InitSound();
-        _initsound.classList.add('hidden');
+        _intro.classList.add('hidden');
 
         let _fullcontainer = document.getElementById("fullcontainer");
           _fullcontainer .classList.remove('hidden');
@@ -411,7 +414,15 @@ function resetGunShot() {
 
 function onYourMarks() {
 
-    _Audio2 = new Audio('onyourmarksgetset.m4a');
+    switch (_language) {
+        case 'NL':
+            _Audio2 = new Audio('opuwplaatsenklaar.m4a');
+            break;
+        default:
+            _Audio2 = new Audio('onyourmarksgetset.m4a');
+            break;
+    }
+  
     _Audio2.pause();
     _Audio2.currentTime = 0;
     _Audio2.volume = 0.8;
@@ -596,7 +607,12 @@ function clickButtonOnYourMarks() {
     // resetGunShot();
     // playonYourMarks();
     InitSound();
-    source1.start(0);
+    //   try{
+    //   source1.pause();
+    //   source1.currentTime = 0;}
+    //   catch{
+    //   }
+      source1.start(0);
 }
 
 function clickButtonGunShot() {
@@ -625,7 +641,8 @@ function InitSound(){
   bufferLoader = new BufferLoader(
     context,
     [
-      'onyourmarksgetset.m4a'
+      'onyourmarksgetset.m4a',
+      'opuwplaatsenklaar.m4a'
     //   'Loud_Gunshot.mp3',
     ],
     finishedLoading
@@ -638,10 +655,21 @@ function finishedLoading(bufferList) {
   // Create two sources and play them both together.
  source1 = context.createBufferSource();
 //  source2 = context.createBufferSource();
-  source1.buffer = bufferList[0];
+ switch (_language) {
+     case 'NL':
+        source1.buffer = bufferList[1];
+         break
+     default:
+        source1.buffer = bufferList[0];
+         break;
+ }
+ 
 //   source2.buffer = bufferList[1];
+// source3.buffer = bufferList[2];
 
-  source1.connect(context.destination);
+var analyser = context.createAnalyser();
+  source1.connect(analyser);
+  analyser.connect(context.destination);
 //   source2.connect(context.destination);
 //   source1.start(0); //play
 //   source2.start(0); //play
@@ -693,4 +721,39 @@ function BufferLoader(context, urlList, callback) {
     for (var i = 0; i < this.urlList.length; ++i)
     this.loadBuffer(this.urlList[i], i);
   }
+
+function language(l){
+    _language = l; // global save
+    let _UK = `
+    <p>- Runner - </p> 
+    <p>Runs best on Android - Chrome</p>
+    <p>Runs best on Safari - iOS</p>
+    <p>Add to StartScreen to experience FullScreen App</p>
+    <p>(After clicking you will hear 1 gunshot to test sound)</p>
+    <p>v1.18  https://openui54u.github.io/RUNNER/</p>
+    <p>Press somewhere on this page to use this beta app.</p> `;
+
+    let _NL = `
+    <p>- Runner - </p> 
+    <p>Werkt het beste op Android - Chrome</p>
+    <p>Werkt het beste op Safari - iOS</p>
+    <p>Gebruik "Toevoegen aan Startscherm" voor FullScreen App</p>
+    <p>(Na het klikken op deze pagina hoor je een startshot om geluid te testen)</p>
+    <p>v1.18 https://openui54u.github.io/RUNNER/</p>
+    <p>Druk ergens op deze pagina om deze beta(test) app te gebruiken</p> `;
+
+    let _initsound = document.getElementById("initsound");
+
+switch (l) {
+    case 'NL':
+        _initsound.innerHTML = _NL;
+        break;
+    default:
+        _initsound.innerHTML = _UK;
+        break;
+}
+
+
+
+}  
 // End of MAIN.js
