@@ -30,18 +30,46 @@
     <div id="initsound" class ="initsound disable-dbl-tap-zoom">
     </div>
     </div>
+
+    <div id="setting_button">
+        <div class="button item3 disable-dbl-tap-zoom">
+            <input type="button" value="Settings" id="button_settings" class="settings" onclick="fsettings();">
+        </div>
+    </div>
+
+    <div id="settings">
+        <div id="adjust">
+
+            <div class="slidecontainer  disable-dbl-tap-zoom">
+                <input type="range" min="12" max="60" value="20" class="slider" id="myRange2">
+                Delay Auto-Rerun (s): <span id="delay2" class="delay"></span>
+            </div>
+
+            <div class="slidecontainer disable-dbl-tap-zoom">
+                <input type="range" min="1" max="1000" value="200" class="slider" id="myRange">
+                Delay ShotGun->Timer (ms): <span id="delay" class="delay"></span>
+            </div>
+
+            <div class="slidecontainer  disable-dbl-tap-zoom">
+                <input type="range" min="1" max="20" value="10" class="slider" id="myRange5">
+                Delay OnYourMarks->Get Set (s): <span id="delay5" class="delay"></span>
+            </div>
+
+            <div class="slidecontainer  disable-dbl-tap-zoom">
+                <input type="range" min="1" max="4" value="2" class="slider" id="myRange3">
+                Delay Get Set ->ShotGun (s): <span id="delay3" class="delay"></span>
+            </div>
+            <div class="slidecontainer disable-dbl-tap-zoom">
+                <input type="range" min="0" max="2" value="1" class="slider" id="myRange4">
+                Random Get Set ->ShotGun(s): <span id="delay4" class="delay"></span>
+            </div>
+
+        </div>
+    </div>
+
     <div id="fullcontainer" class="grid-container hidden disable-dbl-tap-zoom">
 
-        <div class="slidecontainer item2 disable-dbl-tap-zoom">
-            <input type="range" min="1" max="1000" value="200" class="slider" id="myRange">
-            Delay ShotGun->Timer (ms): <span id="delay"></span>
-        </div>
-        <div class="slide2container item2 disable-dbl-tap-zoom">
-            <input type="range" min="12" max="60" value="20" class="slider" id="myRange2">
-            Delay Auto-Rerun (s): <span id="delay2"></span>
-        </div>
         
-
         <div id="stopwatch" class="stopwatch item1 disable-dbl-tap-zoom">
             00:00:00.00
         </div>
@@ -101,6 +129,10 @@
                 <div id="textOYM">
                     OnYourMarks
                 </div>
+                <button id="GetSet" class="button" onclick=clickButtonGetSet()>
+                    <div id="textGS">
+                        Get Set
+                    </div>
         </div>
         <div class="item7c disable-dbl-tap-zoom">
             <button id="GunShot" class="button" onclick=clickButtonGunShot()>

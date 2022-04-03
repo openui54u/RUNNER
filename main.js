@@ -7,16 +7,18 @@
 
 let _div_version = document.getElementById("version");
 if (_div_version) {
-    _div_version.textContent = 'FullScreen 1.18'
+    _div_version.textContent = 'FullScreen 1.20'
 };
 
 let _time = 0;
 var _Audio;
 var _Audio2;
 // var _Audio3;
+var status_settings = true;
 
 var source1 ;
 var source2 ;
+var source3 ;
 
 var context;
 var bufferLoader;
@@ -40,6 +42,11 @@ var voices = [];
 var currentvalueOnOff; // on off switch
 var currentvalueOnOff_interval = {};
 var currentvalueOnOff_timer = 20000;
+
+var currentvalue3_timer = 2 ;  // Gunshot
+var currentvalue4_timer = 1 ; // Random Gunshot+
+var currentvalue5_timer = 10 ; // OnYOurMarks->GetSet
+
 var countdown_interval = {};
 let _currentvalueOnOff_timer = currentvalueOnOff_timer;
 var _language = 'UK';
@@ -72,6 +79,10 @@ window.onload = function () {
 
     let _intro = document.getElementById("intro");
     let _initsound = document.getElementById("initsound");
+    
+    let _settings = document.getElementById('settings');
+
+
     _initsound.addEventListener('click', ()=>{
         InitSound();
         _intro.classList.add('hidden');
@@ -81,6 +92,10 @@ window.onload = function () {
           playGunShot();
 
     })
+
+    _settings.classList.add('hidden');
+    status_settings = false;
+
 
     // GunsHot
     _Audio = GunShot(); // Create the Audio 
@@ -96,12 +111,21 @@ window.onload = function () {
 
     var slider = document.getElementById("myRange");
     var slider2 = document.getElementById("myRange2");
+    var slider3 = document.getElementById("myRange3");
+    var slider4 = document.getElementById("myRange4");
+    var slider5 = document.getElementById("myRange5");
 
     var output = document.getElementById("delay");
     var output2 = document.getElementById("delay2");
+    var output3 = document.getElementById("delay3");
+    var output4 = document.getElementById("delay4");
+    var output5 = document.getElementById("delay5");
 
-    output.innerHTML = slider.value; // Display the default slider value
-    output2.innerHTML = slider2.value; // Display the default slider value
+    output.innerHTML  = slider.value; 
+    output2.innerHTML = slider2.value; 
+    output3.innerHTML = slider3.value;
+    output4.innerHTML = slider4.value;
+    output5.innerHTML = slider5.value; // OnYOurMarks, getSet
 
     // Update the current slider value (each time you drag the slider handle)
 
@@ -112,6 +136,18 @@ window.onload = function () {
     slider2.oninput = function () {
         output2.innerHTML = this.value;
         currentvalueOnOff_timer = this.value * 1000; // ms
+    }
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+        currentvalue3_timer = this.value ; // ms
+    }
+    slider4.oninput = function () {
+        output4.innerHTML = this.value;
+        currentvalue4_timer = this.value ; // ms
+    }
+    slider5.oninput = function () {
+        output5.innerHTML = this.value;
+        currentvalue5_timer = this.value ; // ms
     }
 
     function buttonFullScreen(e) {
@@ -209,7 +245,16 @@ function clickButton(e) {
                 // playonYourMarks();
                 // InitSound();
                 source1.start(0); //OnYourMarks
-                let _gunshottimer = 8500 + Math.random() * 1500;
+
+                let _getsettime    = currentvalue5_timer * 1000 + 500;
+                let _getshottime   = currentvalue3_timer * 1000
+                let _getrandomtime = currentvalue4_timer * 1000;
+
+                setTimeout((e)=>{
+                    source2.start(0); //GetSet
+                }, _getsettime);
+               
+                let _gunshottimer = _getsettime + Math.random() * _getrandomtime + 0 + _getshottime ;
                 if (debug) {
                     console.log(_gunshottimer)
                 };
@@ -412,38 +457,44 @@ function resetGunShot() {
     //  return _Audio;
 }
 
-function onYourMarks() {
+// function onYourMarks() {
 
-    switch (_language) {
-        case 'NL':
-            _Audio2 = new Audio('opuwplaatsenklaar.m4a');
-            break;
-        default:
-            _Audio2 = new Audio('onyourmarksgetset.m4a');
-            break;
-    }
+    // switch (_language) {
+    //     case 'NL':
+    //         _Audio2 = new Audio('opuwplaatsenklaar.m4a');
+    //         break;
+    //     default:
+    //         _Audio2 = new Audio('onyourmarksgetset.m4a');
+    //         break;
+    // }
   
-    _Audio2.pause();
-    _Audio2.currentTime = 0;
-    _Audio2.volume = 0.8;
-    return _Audio2;
-}
-
-function resetOnYourMarks() {
-
-    // _Audio2 = new Audio('onyourmarksgetset.m4a');
-    if(_Audio2){
-    _Audio2.pause();
-    _Audio2.currentTime = 0;
-    _Audio2.volume = 0.8;
-    }
+    // _Audio2.pause();
+    // _Audio2.currentTime = 0;
+    // _Audio2.volume = 0.8;
     // return _Audio2;
-}
+// }
+
+// function resetOnYourMarks() {
+
+    // if(_Audio2){
+    // _Audio2.pause();
+    // _Audio2.currentTime = 0;
+    // _Audio2.volume = 0.8;
+    // }
+
+// }
 
 function playonYourMarks() {
-    if (StopWatch.status == 0 && _Audio2) {
-        _Audio2.play();
-    }
+    // if (StopWatch.status == 0 && _Audio2) {
+    //     _Audio2.play();
+    // }
+    source1.start(0);
+}
+function playGetSet() {
+    // if (StopWatch.status == 0 && _Audio2) {
+    //     _Audio2.play();
+    // }
+    source2.start(0);
 }
 
 
@@ -453,7 +504,23 @@ function playonYourMarks() {
 //     return _Audio3;
 // }
 
+function fsettings(e){
 
+    status_settings = !status_settings;
+
+    let _settings = document.getElementById('settings');
+    let _full = document.getElementById("fullcontainer");
+
+    if (status_settings){
+     _settings.classList.remove('hidden');
+     _full.classList.add('hidden');
+
+    }else{
+     _settings.classList.add('hidden');
+     _full.classList.remove('hidden');
+    }
+
+}
 
 function onoff(b) {
 
@@ -615,9 +682,13 @@ function clickButtonOnYourMarks() {
       source1.start(0);
 }
 
+function clickButtonGetSet() {
+    InitSound();
+    source2.start(0);
+}
+
 function clickButtonGunShot() {
     resetGunShot();
-    // resetOnYourMarks();
     playGunShot();
 }
 
@@ -641,8 +712,10 @@ function InitSound(){
   bufferLoader = new BufferLoader(
     context,
     [
-      'onyourmarksgetset.m4a',
-      'opuwplaatsenklaar.m4a'
+      'onyourmarks.mp3',
+      'opuwplaatsen.mp3',
+      'getset.mp3',
+      'klaar.mp3'
     //   'Loud_Gunshot.mp3',
     ],
     finishedLoading
@@ -654,13 +727,18 @@ function InitSound(){
 function finishedLoading(bufferList) {
   // Create two sources and play them both together.
  source1 = context.createBufferSource();
-//  source2 = context.createBufferSource();
+ source2 = context.createBufferSource();
+
  switch (_language) {
      case 'NL':
         source1.buffer = bufferList[1];
+        source2.buffer = bufferList[3];
+        // source3.buffer = bufferList[5];
          break
      default:
         source1.buffer = bufferList[0];
+        source2.buffer = bufferList[2];
+        // source3.buffer = bufferList[4];
          break;
  }
  
@@ -668,8 +746,13 @@ function finishedLoading(bufferList) {
 // source3.buffer = bufferList[2];
 
 var analyser = context.createAnalyser();
+
   source1.connect(analyser);
+  source2.connect(analyser);
+//   source3.connect(analyser);
+
   analyser.connect(context.destination);
+
 //   source2.connect(context.destination);
 //   source1.start(0); //play
 //   source2.start(0); //play
@@ -730,7 +813,7 @@ function language(l){
     <p>Runs best on Safari - iOS</p>
     <p>Add to StartScreen to experience FullScreen App</p>
     <p>(After clicking you will hear 1 gunshot to test sound)</p>
-    <p>v1.18  https://openui54u.github.io/RUNNER/</p>
+    <p>v1.20  https://openui54u.github.io/RUNNER/</p>
     <p>Press somewhere on this page to use this beta app.</p> `;
 
     let _NL = `
@@ -739,7 +822,7 @@ function language(l){
     <p>Werkt het beste op Safari - iOS</p>
     <p>Gebruik "Toevoegen aan Startscherm" voor FullScreen App</p>
     <p>(Na het klikken op deze pagina hoor je een startshot om geluid te testen)</p>
-    <p>v1.18 https://openui54u.github.io/RUNNER/</p>
+    <p>v1.20 https://openui54u.github.io/RUNNER/</p>
     <p>Druk ergens op deze pagina om deze beta(test) app te gebruiken</p> `;
 
     let _initsound = document.getElementById("initsound");
