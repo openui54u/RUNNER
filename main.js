@@ -100,10 +100,6 @@ window.onload = function () {
     // GunsHot
     _Audio = GunShot(); // Create the Audio 
 
-    // On Your Marks, get Set
-    // _Audio2 = onYourMarks(); // Create the Audio 
-
-    // let _container = document.getElementById("container");
     _div_version.addEventListener('click', (e) => {
         buttonFullScreen(e)
     });
@@ -220,7 +216,6 @@ function clickButton(e) {
     // Stop with gunshot
     if (StopWatch.status == 1 && _time <= 1000 && _time != 0) {
         resetGunShot();
-        // resetOnYourMarks();
         playGunShot();
     }
 
@@ -239,11 +234,8 @@ function clickButton(e) {
         // 0 1 2 0
         switch (StopWatch.status) {
             case 0: //Start
-            // InitSound();
+
                 resetGunShot();
-                // resetOnYourMarks();
-                // playonYourMarks();
-                // InitSound();
                 source1.start(0); //OnYourMarks
 
                 let _getsettime    = currentvalue5_timer * 1000 + 500;
@@ -261,12 +253,7 @@ function clickButton(e) {
                 setTimeout((e) => {
 
                     if (StopWatch.status == 1) {
-                        // resetGunShot();
-                        // resetOnYourMarks();
                         playGunShot();
-                        // InitSound();
-                        // source2.start(0);
-
                         setTimeout((e) => {
                             StopWatch.start = {};
                             StopWatch.start.mi = new Date().getMilliseconds();
@@ -450,59 +437,23 @@ function GunShot() {
 }
 
 function resetGunShot() {
-    // _Audio = new Audio('Loud_Gunshot.mp3');
     _Audio.pause();
     _Audio.currentTime = 0;
     _Audio.volume = 1;
-    //  return _Audio;
 }
 
-// function onYourMarks() {
 
-    // switch (_language) {
-    //     case 'NL':
-    //         _Audio2 = new Audio('opuwplaatsenklaar.m4a');
-    //         break;
-    //     default:
-    //         _Audio2 = new Audio('onyourmarksgetset.m4a');
-    //         break;
-    // }
-  
-    // _Audio2.pause();
-    // _Audio2.currentTime = 0;
-    // _Audio2.volume = 0.8;
-    // return _Audio2;
-// }
-
-// function resetOnYourMarks() {
-
-    // if(_Audio2){
-    // _Audio2.pause();
-    // _Audio2.currentTime = 0;
-    // _Audio2.volume = 0.8;
-    // }
-
-// }
 
 function playonYourMarks() {
-    // if (StopWatch.status == 0 && _Audio2) {
-    //     _Audio2.play();
-    // }
+     if (StopWatch.status == 0 ){
     source1.start(0);
+     }
 }
 function playGetSet() {
-    // if (StopWatch.status == 0 && _Audio2) {
-    //     _Audio2.play();
-    // }
+ if (StopWatch.status == 0) {
     source2.start(0);
+ }
 }
-
-
-// function speakset() {
-//     _Audio3 = new Audio('getset.m4a');
-//     _Audio3.pause();
-//     return _Audio3;
-// }
 
 function fsettings(e){
 
