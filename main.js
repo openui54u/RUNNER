@@ -16,9 +16,9 @@ var _Audio2;
 // var _Audio3;
 var status_settings = true;
 
-var source1 ;
-var source2 ;
-var source3 ;
+var source1;
+var source2;
+var source3;
 
 var context;
 var bufferLoader;
@@ -36,16 +36,16 @@ let _div_StopM = document.getElementById("marktext");
 
 var arrayLapText = [];
 var arrayMarkText = [];
-var  arrayLapTime = [];
+var arrayLapTime = [];
 var synth = window.speechSynthesis;
 var voices = [];
 var currentvalueOnOff; // on off switch
 var currentvalueOnOff_interval = {};
 var currentvalueOnOff_timer = 20000;
 
-var currentvalue3_timer = 2 ;  // Gunshot
-var currentvalue4_timer = 1 ; // Random Gunshot+
-var currentvalue5_timer = 10 ; // OnYOurMarks->GetSet
+var currentvalue3_timer = 2; // Gunshot
+var currentvalue4_timer = 1; // Random Gunshot+
+var currentvalue5_timer = 10; // OnYOurMarks->GetSet
 
 var countdown_interval = {};
 let _currentvalueOnOff_timer = currentvalueOnOff_timer;
@@ -79,17 +79,17 @@ window.onload = function () {
 
     let _intro = document.getElementById("intro");
     let _initsound = document.getElementById("initsound");
-    
+
     let _settings = document.getElementById('settings');
 
 
-    _initsound.addEventListener('click', ()=>{
+    _initsound.addEventListener('click', () => {
         InitSound();
         _intro.classList.add('hidden');
 
         let _fullcontainer = document.getElementById("fullcontainer");
-          _fullcontainer .classList.remove('hidden');
-          playGunShot();
+        _fullcontainer.classList.remove('hidden');
+        playGunShot();
 
     })
 
@@ -117,8 +117,8 @@ window.onload = function () {
     var output4 = document.getElementById("delay4");
     var output5 = document.getElementById("delay5");
 
-    output.innerHTML  = slider.value; 
-    output2.innerHTML = slider2.value; 
+    output.innerHTML = slider.value;
+    output2.innerHTML = slider2.value;
     output3.innerHTML = slider3.value;
     output4.innerHTML = slider4.value;
     output5.innerHTML = slider5.value; // OnYOurMarks, getSet
@@ -135,15 +135,15 @@ window.onload = function () {
     }
     slider3.oninput = function () {
         output3.innerHTML = this.value;
-        currentvalue3_timer = this.value ; // ms
+        currentvalue3_timer = this.value; // ms
     }
     slider4.oninput = function () {
         output4.innerHTML = this.value;
-        currentvalue4_timer = this.value ; // ms
+        currentvalue4_timer = this.value; // ms
     }
     slider5.oninput = function () {
         output5.innerHTML = this.value;
-        currentvalue5_timer = this.value ; // ms
+        currentvalue5_timer = this.value; // ms
     }
 
     function buttonFullScreen(e) {
@@ -174,9 +174,13 @@ function clickButtonLap(e) {
             arrayLapText.push(_laptime);
             arrayLapTime.push(_time);
             let _max = Math.max.apply(Math, arrayLapTime);
-            if(debug){console.log(_max)};
+            if (debug) {
+                console.log(_max)
+            };
             let _min = Math.min.apply(Math, arrayLapTime);
-            if(debug){console.log(_min)};
+            if (debug) {
+                console.log(_min)
+            };
             _div_StopL.textContent = arrayLapText.toString().split(',').join("\r\n");
             _div_StopL.scrollTop = _div_StopL.scrollHeight;
 
@@ -233,20 +237,21 @@ function clickButton(e) {
     if (_div) {
         // 0 1 2 0
         switch (StopWatch.status) {
+
             case 0: //Start
 
                 resetGunShot();
                 source1.start(0); //OnYourMarks
 
-                let _getsettime    = currentvalue5_timer * 1000 + 500;
-                let _getshottime   = currentvalue3_timer * 1000
+                let _getsettime = currentvalue5_timer * 1000 + 500;
+                let _getshottime = currentvalue3_timer * 1000
                 let _getrandomtime = currentvalue4_timer * 1000;
 
-                setTimeout((e)=>{
+                setTimeout((e) => {
                     source2.start(0); //GetSet
                 }, _getsettime);
-               
-                let _gunshottimer = _getsettime + Math.random() * _getrandomtime + 0 + _getshottime ;
+
+                let _gunshottimer = _getsettime + Math.random() * _getrandomtime + 0 + _getshottime;
                 if (debug) {
                     console.log(_gunshottimer)
                 };
@@ -272,8 +277,9 @@ function clickButton(e) {
                 };
                 _div.textContent = 'STOP';
                 break;
+
             case 1: // Running->Stop
-            InitSound();
+                InitSound();
                 clearInterval(_Interval);
 
                 StopWatch.end = {};
@@ -287,8 +293,9 @@ function clickButton(e) {
                 };
 
                 break;
+
             case 2: // Reset
-            InitSound();
+                InitSound();
                 StopWatch = {};
                 StopWatch.status = -1;
                 _div.textContent = 'START';
@@ -301,6 +308,7 @@ function clickButton(e) {
                 arrayMarkText = [];
 
                 break;
+
             default:
                 break;
         }
@@ -355,8 +363,6 @@ function refresh() {
             case 1: // RUnning waiting for STOP
                 _button.classList.remove("start");
                 _button.classList.add("stop");
-                // _div.textContent = 'STOP'  
-
 
                 if (_time < 1000 && _time != 0) {
                     _div.textContent = '>>STOP<<'
@@ -445,30 +451,31 @@ function resetGunShot() {
 
 
 function playonYourMarks() {
-     if (StopWatch.status == 0 ){
-    source1.start(0);
-     }
-}
-function playGetSet() {
- if (StopWatch.status == 0) {
-    source2.start(0);
- }
+    if (StopWatch.status == 0) {
+        source1.start(0);
+    }
 }
 
-function fsettings(e){
+function playGetSet() {
+    if (StopWatch.status == 0) {
+        source2.start(0);
+    }
+}
+
+function fsettings(e) {
 
     status_settings = !status_settings;
 
     let _settings = document.getElementById('settings');
     let _full = document.getElementById("fullcontainer");
 
-    if (status_settings){
-     _settings.classList.remove('hidden');
-     _full.classList.add('hidden');
+    if (status_settings) {
+        _settings.classList.remove('hidden');
+        _full.classList.add('hidden');
 
-    }else{
-     _settings.classList.add('hidden');
-     _full.classList.remove('hidden');
+    } else {
+        _settings.classList.add('hidden');
+        _full.classList.remove('hidden');
     }
 
 }
@@ -512,12 +519,14 @@ function refreshpage() {
     clearInterval(countdown_interval)
     clearInterval(_Interval);
 
-    if(_Audio){
-    _Audio.pause();
-    _Audio.currentTime = 0};
-    if(_Audio2){
-    _Audio2.pause();
-    _Audio2.currentTime = 0};
+    if (_Audio) {
+        _Audio.pause();
+        _Audio.currentTime = 0
+    };
+    if (_Audio2) {
+        _Audio2.pause();
+        _Audio2.currentTime = 0
+    };
 
     StopWatch.status = 1; // Trigger from RESET
     _time = 99999999;
@@ -630,7 +639,7 @@ function clickButtonOnYourMarks() {
     //   source1.currentTime = 0;}
     //   catch{
     //   }
-      source1.start(0);
+    source1.start(0);
 }
 
 function clickButtonGetSet() {
@@ -646,67 +655,66 @@ function clickButtonGunShot() {
 
 
 
-function InitSound(){
-  // Fix up prefixing
-//   window.AudioContext = window.AudioContext || window.webkitAudioContext;
-//   context = new AudioContext();
+function InitSound() {
+    // Fix up prefixing
+    //   window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    //   context = new AudioContext();
 
-  try {
-    // Fix up for prefixing
-    window.AudioContext = window.AudioContext||window.webkitAudioContext;
-    context = new AudioContext();
-  }
-  catch(e) {
-    alert('Web Audio API is not supported in this browser');
-  }
- 
-  bufferLoader = new BufferLoader(
-    context,
-    [
-      'onyourmarks.mp3',
-      'opuwplaatsen.mp3',
-      'getset.mp3',
-      'klaar.mp3'
-    //   'Loud_Gunshot.mp3',
-    ],
-    finishedLoading
+    try {
+        // Fix up for prefixing
+        window.AudioContext = window.AudioContext || window.webkitAudioContext;
+        context = new AudioContext();
+    } catch (e) {
+        alert('Web Audio API is not supported in this browser');
+    }
+
+    bufferLoader = new BufferLoader(
+        context,
+        [
+            'onyourmarks.mp3',
+            'opuwplaatsen.mp3',
+            'getset.mp3',
+            'klaar.mp3'
+            //   'Loud_Gunshot.mp3',
+        ],
+        finishedLoading
     );
 
-  bufferLoader.load();
+    bufferLoader.load();
 }
 
 function finishedLoading(bufferList) {
-  // Create two sources and play them both together.
- source1 = context.createBufferSource();
- source2 = context.createBufferSource();
+    // Create two sources and play them both together.
+    source1 = context.createBufferSource();
+    source2 = context.createBufferSource();
 
- switch (_language) {
-     case 'NL':
-        source1.buffer = bufferList[1];
-        source2.buffer = bufferList[3];
-        // source3.buffer = bufferList[5];
-         break
-     default:
-        source1.buffer = bufferList[0];
-        source2.buffer = bufferList[2];
-        // source3.buffer = bufferList[4];
-         break;
- }
- 
-//   source2.buffer = bufferList[1];
-// source3.buffer = bufferList[2];
+    switch (_language) {
+        case 'NL':
+            source1.buffer = bufferList[1];
+            source2.buffer = bufferList[3];
+            // source3.buffer = bufferList[5];
+            break
+        default:
+            source1.buffer = bufferList[0];
+            source2.buffer = bufferList[2];
+            // source3.buffer = bufferList[4];
+            break;
+    }
 
-var analyser = context.createAnalyser();
+    //   source2.buffer = bufferList[1];
+    // source3.buffer = bufferList[2];
 
-  source1.connect(analyser);
-  source2.connect(analyser);
-//   source3.connect(analyser);
+    var analyser = context.createAnalyser();
 
-  analyser.connect(context.destination);
+    source1.connect(analyser);
+    source2.connect(analyser);
+    //   source3.connect(analyser);
 
-//   source2.connect(context.destination);
-//   source1.start(0); //play
-//   source2.start(0); //play
+    analyser.connect(context.destination);
+
+    //   source2.connect(context.destination);
+    //   source1.start(0); //play
+    //   source2.start(0); //play
 }
 
 function BufferLoader(context, urlList, callback) {
@@ -715,48 +723,48 @@ function BufferLoader(context, urlList, callback) {
     this.onload = callback;
     this.bufferList = new Array();
     this.loadCount = 0;
-  }
-  
-  BufferLoader.prototype.loadBuffer = function(url, index) {
+}
+
+BufferLoader.prototype.loadBuffer = function (url, index) {
     // Load buffer asynchronously
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.responseType = "arraybuffer";
-  
-    var loader = this;
-  
-    request.onload = function() {
-      // Asynchronously decode the audio file data in request.response
-      loader.context.decodeAudioData(
-        request.response,
-        function(buffer) {
-          if (!buffer) {
-            alert('error decoding file data: ' + url);
-            return;
-          }
-          loader.bufferList[index] = buffer;
-          if (++loader.loadCount == loader.urlList.length)
-            loader.onload(loader.bufferList);
-        },
-        function(error) {
-          console.error('decodeAudioData error', error);
-        }
-      );
-    }
-  
-    request.onerror = function() {
-      alert('BufferLoader: XHR error');
-    }
-  
-    request.send();
-  }
-  
-  BufferLoader.prototype.load = function() {
-    for (var i = 0; i < this.urlList.length; ++i)
-    this.loadBuffer(this.urlList[i], i);
-  }
 
-function language(l){
+    var loader = this;
+
+    request.onload = function () {
+        // Asynchronously decode the audio file data in request.response
+        loader.context.decodeAudioData(
+            request.response,
+            function (buffer) {
+                if (!buffer) {
+                    alert('error decoding file data: ' + url);
+                    return;
+                }
+                loader.bufferList[index] = buffer;
+                if (++loader.loadCount == loader.urlList.length)
+                    loader.onload(loader.bufferList);
+            },
+            function (error) {
+                console.error('decodeAudioData error', error);
+            }
+        );
+    }
+
+    request.onerror = function () {
+        alert('BufferLoader: XHR error');
+    }
+
+    request.send();
+}
+
+BufferLoader.prototype.load = function () {
+    for (var i = 0; i < this.urlList.length; ++i)
+        this.loadBuffer(this.urlList[i], i);
+}
+
+function language(l) {
     _language = l; // global save
     let _UK = `
     <p>- Runner - </p> 
@@ -778,16 +786,16 @@ function language(l){
 
     let _initsound = document.getElementById("initsound");
 
-switch (l) {
-    case 'NL':
-        _initsound.innerHTML = _NL;
-        break;
-    default:
-        _initsound.innerHTML = _UK;
-        break;
+    switch (l) {
+        case 'NL':
+            _initsound.innerHTML = _NL;
+            break;
+        default:
+            _initsound.innerHTML = _UK;
+            break;
+    }
+
+
+
 }
-
-
-
-}  
 // End of MAIN.js
