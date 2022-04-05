@@ -294,7 +294,7 @@ font-size: 1rem;
   left: 10%;
   position: relative;
 }
-#button_settings{
+/* #button_settings{
 
 }
 #setting_button{
@@ -303,7 +303,8 @@ font-size: 1rem;
 
 #full_container{
 
-}
+} */
+
 /* @media screen  and (orientation: landscape) {
   .grid-container {
   display: grid;

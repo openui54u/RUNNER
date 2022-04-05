@@ -24,7 +24,7 @@ var context;
 var bufferLoader;
 
 var StopWatch = {};
-StopWatch.status = 0;
+    StopWatch.status = 0;
 var StopWatch_correction = 200; //time for sound to play
 let _Interval = {};
 let debug = false;
