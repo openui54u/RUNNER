@@ -14,7 +14,7 @@ body{
   left: 1vw;
   position: relative;
   text-align: left;
-  width: 3em;
+  width: 5em;
   font-size: 1em;
   top: 1.5em;
   height: 1em;
@@ -287,6 +287,23 @@ font-size: 1rem;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
+#settings{
+  width: 95%;
+  height: 95%;
+  left: 10%;
+  position: relative;
+}
+#button_settings{
+
+}
+#setting_button{
+
+}
+
+#full_container{
+
+}
 /* @media screen  and (orientation: landscape) {
   .grid-container {
   display: grid;
@@ -304,19 +321,3 @@ font-size: 1rem;
   width: 100vh;
   }
 } */
-#settings{
-  width: 95%;
-  height: 95%;
-  left: 10%;
-  position: relative;
-}
-#button_settings{
-
-}
-#setting_button{
-
-}
-
-#full_container{
-
-}
