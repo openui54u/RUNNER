@@ -201,10 +201,7 @@ width: 100%;
 
 
   #onoff{
-    /* position: absolute; */
     width: 100vw;
-    /* height: 4vh; */
-    /* left: 3vw; */
 }
 
 
@@ -254,10 +251,7 @@ grid-template-areas:
   'button2 button2 button2b button2b'
   'list list list2 list2'
   'footer1 footer2 footer2 footer3';
-/* gap: 5px; */
 padding: 0px;
-/* height: 95vh; */
-/* width: 95vw; */
 }
 
 .grid-container > div {
@@ -279,7 +273,6 @@ font-size: 1rem;
 }
 
 .lang{
-  /* float: right; */
   width: 40vw;
   max-width: 100px;
   height: 6vh;
@@ -318,16 +311,12 @@ font-size: 1rem;
   position: relative;
 }
 #button_settings{
-  /* height: 100px;
-  width: 100px; */
+
 }
 #setting_button{
-/* width: 100%; */
+
 }
 
 #full_container{
-  /* left: 50px; */
-  /* width: 90vw; */
-  /* max-width: 90%; */
-  /* postion:absolute; */
+
 }
